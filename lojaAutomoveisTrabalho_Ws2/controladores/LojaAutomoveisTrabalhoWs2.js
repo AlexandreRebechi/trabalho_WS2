@@ -33,12 +33,6 @@ module.exports.addLojaAutomoveisTrabalhoWs2 = addLojaAutomoveisTrabalhoWs2;
 
 const updateLojaAutomoveisTrabalhoWs2 = (request, response, next) => {
     const { id, nomeCarro, nomeMarca, preco,anoFabricacao } = request.body
-    console.log(id)
-    console.log(nomeCarro)
-    console.log(nomeMarca)
-    console.log(preco)
-    console.log(anoFabricacao)
-
     pool.query(
         'UPDATE LojaAutomoveisTrabalhoWs2 set nomeCarro = $1, nomeMarca=$2, preco = $3, anoFabricacao = $4  where id=$5',
         [nomeCarro, nomeMarca, preco,anoFabricacao, id],
