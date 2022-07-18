@@ -8,9 +8,8 @@ const jwt = require('jsonwebtoken');
 
 // login autenticação
 const login = (request, response, next) => {
-    const { nome_usuario, senha } = request.body
-    console.log(nome_usuario)
-    console.log(senha)
+    const { nome_usuario, senha }=request.body
+    console.log(nome_usuario,senha)
     pool.query('SELECT * FROM usuarios where nome_usuario = $1 and senha = $2', [nome_usuario, senha], (error, results) => {
         console.log(results)
         if (error || results.rowCount == 0) {

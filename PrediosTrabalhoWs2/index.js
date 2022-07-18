@@ -17,22 +17,17 @@ app.use(cors())
 // importanto o controle de LojaAutomoveisTrabalhoWs2
 const Predios_api = require('./controladores/Predios_api')
 
-// importando o controle de segurança
-const seguranca = require('./controladores/seguranca')
+
 
 app
-    .route('/api/Predios')
-    .get(seguranca.verificaJWT, Predios_api.getPredios_api)
-    .post(seguranca.verificaJWT, Predios_api.addPredios_api)
-    .put(seguranca.verificaJWT, Predios_api.updatePredios_api)
-app.route('/api/Predios/:id')
-    .get(seguranca.verificaJWT, Predios_api.getPredios_apiPorID)
-    .delete(seguranca.verificaJWT, Predios_api.deletePredios_api)
+    .route('/Predios')
+    .get(Predios_api.getPredios_api)
+    .post(Predios_api.addPredios_api)
+    .put(Predios_api.updatePredios_api)
+app.route('/Predios/:id')
+    .get( Predios_api.getPredios_apiPorID)
+    .delete(Predios_api.deletePredios_api)
 
-// rota do login
-app
-  .route("/api/login")
-  .post(seguranca.login)   
 
 
 app.listen(process.env.PORT || 3001, () => {
